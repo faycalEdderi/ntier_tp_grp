@@ -4,9 +4,11 @@ const cors = require("cors");
 app.use(express.json());
 
 const PORT = 4000;
+const mongoUri = process.env.MONGO_URI;
+
 app.use(cors({ origin: "*" }));
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/storedb", {
+mongoose.connect(mongoUri, {
 });
 console.log("Connected to MongoDB");
 

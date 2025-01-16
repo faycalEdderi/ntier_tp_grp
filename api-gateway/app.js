@@ -1,8 +1,13 @@
 const express = require("express");
+const cors = require("cors");
+
 const { createProxyMiddleware } = require("http-proxy-middleware");
 require("dotenv").config();
  
 const app = express();
+
+app.use(cors({ origin: "*" }));
+
  
 app.use((req, res, next) => {
   console.log(`[${new Date().toLocaleTimeString()}] ${req.method} ${req.url}`);
