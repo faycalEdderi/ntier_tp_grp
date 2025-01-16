@@ -1,0 +1,63 @@
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - api-gateway
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - GATEWAY_PORT=3001
+    volumes:
+      - ./api-gateway:/app
+      - /app/node_modules
+    depends_on:
+      - user
+      - product
+
+  user:
+    build: ./user
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=development
+      - JWT_SECRET=sDeZHsH33*
+      - JWT_EXPIRES_IN=3h
+    volumes:
+      - ./user:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+
+  product:
+    build: ./product
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+      - JWT_SECRET=sDeZHsH33*
+    volumes:
+      - ./product:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
