@@ -15,9 +15,13 @@ app.use((req, res, next) => {
 const PORT = 4000;
 app.use(cors({ origin: "*" }));
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/userdb", {
-});
-console.log("Connected to MongoDB");
+mongoose
+  .connect("mongodb://127.0.0.1:27017/storedb", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 const publicationRoutes = require("./Route/userRoute"); 
 
