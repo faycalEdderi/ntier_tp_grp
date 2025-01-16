@@ -1,6 +1,8 @@
 services:
   frontend:
-    build: ./frontend
+    build: 
+      context: ./frontend
+      dockerfile: ./DockerFile
     ports:
       - "3000:3000"
     environment:
@@ -10,9 +12,13 @@ services:
       - /app/node_modules
     depends_on:
       - api-gateway
+    networks:
+    - ze_bridge
 
   api-gateway:
-    build: ./api-gateway
+    build: 
+      context: ./api-gateway
+      dockerfile: ./DockerFile
     ports:
       - "3001:3001"
     environment:
@@ -24,9 +30,13 @@ services:
     depends_on:
       - user
       - product
+    networks:
+    - ze_bridge
 
   user:
-    build: ./user
+    build: 
+      context: ./user
+      dockerfile: ./DockerFile
     ports:
       - "4000:4000"
     environment:
@@ -38,9 +48,13 @@ services:
       - /app/node_modules
     depends_on:
       - mongo
+    networks:
+    - ze_bridge
 
   product:
-    build: ./product
+    build: 
+      context: ./product
+      dockerfile: ./DockerFile
     ports:
       - "5000:5000"
     environment:
@@ -51,6 +65,8 @@ services:
       - /app/node_modules
     depends_on:
       - mongo
+    networks:
+    - ze_bridge
 
   mongo:
     image: mongo:latest
@@ -58,6 +74,12 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    networks:
+      - ze_bridge
 
 volumes:
   mongo-data:
+
+networks:
+  ze_bridge:
+    driver: bridge
