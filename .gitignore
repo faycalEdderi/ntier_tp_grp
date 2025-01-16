@@ -22,11 +22,11 @@ api-gateway/build/
 publication/build/
 user/build/
 
-# Environment variables
-frontend/.env
-api-gateway/.env
-publication/.env
-user/.env
+# Environment variables (la bonne pratique est de ne pas publier les fichiers .env normalement)
+# frontend/.env
+# api-gateway/.env
+# publication/.env
+# user/.env
 
 # Miscellaneous
 .DS_Store

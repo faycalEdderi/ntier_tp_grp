@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 app.use(express.json());
-// dotenv
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -15,16 +14,22 @@ app.use((req, res, next) => {
 const PORT = 5000;
 app.use(cors({ origin: "*" }));
 const mongoose = require("mongoose");
+<<<<<<< HEAD:publication/app.js
 mongoose.connect("mongodb://127.0.0.1:27017/publicationdb", {
 }).then(() => {
   console.log('Connexion réussie à MongoDB');
 }).catch((err) => {
   console.error('Erreur de connexion à MongoDB :', err);
+=======
+mongoose.connect("mongodb://localhost:27017/storedb", {
+useNewUrlParser: true,
+useUnifiedTopology: true,
+>>>>>>> master:product/app.js
 });
 
-const publicationRoutes = require("./Route/publicationRoute"); 
+const productRoutes = require("./Route/productRoute"); 
 
-app.use("/publications", publicationRoutes);
+app.use("/products", productRoutes);
 
 
 app.listen(PORT, () => {
