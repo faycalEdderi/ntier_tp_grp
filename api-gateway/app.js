@@ -12,7 +12,7 @@ app.use((req, res, next) => {
 // Mapping des microservices
 const serviceMap = {
   users: "http://localhost:4000/users",
-  publications: "http://localhost:5000/publications",
+  products: "http://localhost:5000/products",
 };
  
 // Middleware dynamique

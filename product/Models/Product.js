@@ -1,9 +1,17 @@
 const mongoose = require("mongoose");
 
-const publicationSchema = new mongoose.Schema({
-  title: {
+const productSchema = new mongoose.Schema({
+  name: {
     type: String,
     required: true,
+  },
+  description: {
+    type: String,
+    required: false,
+  },
+  price: {
+    type: Number,
+    //required: true,
   },
   date: {
     type: Date,
@@ -16,4 +24,4 @@ const publicationSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Publication", publicationSchema);
+module.exports = mongoose.model("Product", productSchema);

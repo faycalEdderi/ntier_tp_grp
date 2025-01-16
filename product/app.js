@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 app.use(express.json());
-// dotenv
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -15,15 +14,15 @@ app.use((req, res, next) => {
 const PORT = 5000;
 app.use(cors({ origin: "*" }));
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/publicationdb", {
+mongoose.connect("mongodb://localhost:27017/storedb", {
 useNewUrlParser: true,
 useUnifiedTopology: true,
 });
 console.log("Connected to MongoDB");
 
-const publicationRoutes = require("./Route/publicationRoute"); 
+const productRoutes = require("./Route/productRoute"); 
 
-app.use("/publications", publicationRoutes);
+app.use("/products", productRoutes);
 
 
 app.listen(PORT, () => {

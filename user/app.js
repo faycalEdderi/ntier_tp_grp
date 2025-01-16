@@ -6,7 +6,7 @@ app.use(express.json());
 const PORT = 4000;
 app.use(cors({ origin: "*" }));
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/userdb", {
+mongoose.connect("mongodb://localhost:27017/storedb", {
 });
 console.log("Connected to MongoDB");
 

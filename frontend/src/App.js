@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Publication from "./Components/Publication/Publication";
+import Product from "./Components/Product/Product";
 import Login from "./Components/User/Login";
 import Register from "./Components/User/Register";
 import NavBar from "./Components/Nav/NavBar";
@@ -10,7 +10,7 @@ const App = () => {
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route path='/publications' element={<Publication />} />
+        <Route path='/products' element={<Product />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
       </Routes>
