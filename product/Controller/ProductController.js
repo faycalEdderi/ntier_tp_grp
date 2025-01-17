@@ -81,6 +81,10 @@ const cacheProduct = async (req, res) => {
   }
 };
 
+const health = async (req, res) => {
+  res.status(200).send({ message: "Product service is running" });
+};
+
 module.exports = {
   createProduct,
   getProduct,
@@ -88,4 +92,5 @@ module.exports = {
   updateProduct,
   deleteProduct,
   cacheProduct,
+  health,
 };

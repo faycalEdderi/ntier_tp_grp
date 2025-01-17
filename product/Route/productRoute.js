@@ -10,6 +10,7 @@ const {
   deleteProduct,
   updateProduct,
   cacheProduct,
+  health
 } = require("../Controller/ProductController");
 
 router.post("/create", authMiddleware, createProduct);
@@ -19,5 +20,7 @@ router.delete("/delete/:id", authMiddleware, deleteProduct);
 router.put("/edit/:id", authMiddleware, updateProduct);
 
 router.get("/get", cacheProduct);
+
+router.get("/health", health);
 
 module.exports = router;
