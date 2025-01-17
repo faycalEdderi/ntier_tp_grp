@@ -4,15 +4,23 @@ require("dotenv").config();
 
 
 const client = redis.createClient({
-    host: process.env.REDIS_HOST,
-    port: process.env.REDIS_PORT
+    url: 'redis://redis:6379',
   });
  
 client.on("error", (err) => console.error("Redis client error:", err));
  
 (async () => {
-    await client.connect();
-})();
+    let connected = false;
+    while (!connected) {
+      try {
+        await client.connect();
+        connected = true;
+      } catch (err) {
+        console.error("Waiting for Redis to be ready...");
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+    }
+  })();
  
 exports.getCache = async (key) => {
     try {
