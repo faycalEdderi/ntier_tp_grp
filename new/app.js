@@ -11,19 +11,18 @@ app.use((req, res, next) => {
     next();
   });
 
-const PORT = 5000;
-const mongoUri = process.env.MONGO_URI;
-
+const PORT = 8000;
 app.use(cors({ origin: "*" }));
 const mongoose = require("mongoose");
-mongoose.connect(mongoUri, {
+mongoose.connect("mongodb://127.0.0.1:27017/storedb", {
 useNewUrlParser: true,
 useUnifiedTopology: true,
 });
+console.log("Connected to MongoDB");
 
-const productRoutes = require("./Route/productRoute"); 
+const newRoute = require("./Route/newRoute"); 
 
-app.use("/products", productRoutes);
+app.use("/news", newRoute);
 
 
 app.listen(PORT, () => {

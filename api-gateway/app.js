@@ -18,6 +18,7 @@ app.use((req, res, next) => {
 const serviceMap = {
   users: "http://localhost:4000/users",
   products: "http://localhost:5000/products",
+  news: "http://localhost:8000/news",
 };
  
 // Middleware dynamique
