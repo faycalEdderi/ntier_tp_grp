@@ -1,4 +1,4 @@
-# n-tier TP solo
+# n-tier TP Groupe
 
 ## Routes
 
@@ -31,15 +31,21 @@ Use the gateway url and add the endpoint you need
 - `PUT /edit/:id`: Update an existing publication by ID.
 - `DELETE /delete/:id`: Delete a publication by ID.
 
-### Redis and cache (not finished)
-
-The method cachePublication use the cache with redis which is configured to use the cache to get the publication and expire after 5min 
-However the method and the logic need more dev to be implemented without regression in the rest of the code so cachePublication isn't use for the moment
-
-
 ### Frontend
 
 - `http://localhost:3000/publications`: create publication
 - `http://localhost:3000/register`: registration
 - `http://localhost:3000/login`: login
 
+### Redis and cache
+
+Expiration set to 10s for testing, can increase the timer for production
+The cache is invalidated when a product is deleted/added/updated
+
+### Mailtrap & NodeMailer
+
+We added an sending email feature, to make it work, you have to add values on the .env
+
+-   SENDER_EMAIL = "heypapi@gmail.com";
+-   USER_PASS =
+-   PASS_PASS =
