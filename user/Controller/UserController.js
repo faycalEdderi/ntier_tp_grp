@@ -62,5 +62,9 @@ const loginUser = async (req, res) => {
   }
 };
 
+const health = async (req, res) => {
+  res.status(200).send({ message: "User service is running" });
+}
 
-module.exports = { createUser, getUser, loginUser };
+
+module.exports = { createUser, getUser, loginUser, health };
