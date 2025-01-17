@@ -92,10 +92,15 @@ const updateProduct = async (req, res) => {
     }
 };
 
+const health = async (req, res) => {
+  res.status(200).send({ message: "Product service is running" });
+};
+
 module.exports = {
     createProduct,
     getProduct,
     getProductById,
     updateProduct,
     deleteProduct,
+    health,
 };

@@ -36,8 +36,13 @@ const getAllNews = async (req, res) => {
   }
 };
 
+const health = async (req, res) => {
+  res.status(200).send({ message: "News service is running" });
+}
+
 // Export des méthodes
 module.exports = {
   createNews,
   getAllNews,
+  health
 };
