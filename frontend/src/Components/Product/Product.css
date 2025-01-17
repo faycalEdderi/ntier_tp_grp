@@ -2,6 +2,14 @@
   padding: 2rem;
 }
 
+.products {
+  display: block;
+}
+
+.products li {
+  margin-bottom: 1rem;
+}
+
 h2 {
   margin-bottom: 1rem;
 }
@@ -22,15 +30,9 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+  margin-right: 1%;
 }
 
 button:hover {
   background-color: #218838;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .container {
-      padding: 1rem;
-  }
 }

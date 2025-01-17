@@ -18,6 +18,9 @@ const NavBar = () => {
         <li>
           <Link to="/news">News</Link>
         </li>
+        <li>
+          <Link to="/status">Status</Link>
+        </li>
       </ul>
     </nav>
   );

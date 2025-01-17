@@ -122,7 +122,7 @@ const AddProduct = () => {
         <button type='submit'>{isEditing ? "Modifier" : "Ajouter"}</button>
             </form>
             <h2>Liste des produits</h2>
-            <ul>
+            <ul className='products'>
                 {products.map((prod) => (
                     <li key={prod._id}>
                         {prod.name}
