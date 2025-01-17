@@ -1,6 +1,6 @@
 services:
   frontend:
-    build: 
+    build:
       context: ./frontend
       dockerfile: ./DockerFile
     ports:
@@ -13,10 +13,10 @@ services:
     depends_on:
       - api-gateway
     networks:
-    - ze_bridge
+      - ze_bridge
 
   api-gateway:
-    build: 
+    build:
       context: ./api-gateway
       dockerfile: ./DockerFile
     ports:
@@ -31,10 +31,10 @@ services:
       - user
       - product
     networks:
-    - ze_bridge
+      - ze_bridge
 
   user:
-    build: 
+    build:
       context: ./user
       dockerfile: ./DockerFile
     ports:
@@ -51,10 +51,10 @@ services:
     depends_on:
       - mongo
     networks:
-    - ze_bridge
+      - ze_bridge
 
   product:
-    build: 
+    build:
       context: ./product
       dockerfile: ./DockerFile
     ports:
@@ -73,10 +73,10 @@ services:
       - mongo
       # - redis
     networks:
-    - ze_bridge
+      - ze_bridge
 
   new:
-    build: 
+    build:
       context: ./new
       dockerfile: ./DockerFile
     ports:
@@ -107,8 +107,26 @@ services:
   #   networks:
   #     - ze_bridge
 
+  status:
+    build:
+      context: ./status
+      dockerfile: ./DockerFile
+    ports:
+      - "7000:7000"
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://localhost:27017/storedb
+    volumes:
+      - ./status:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+    networks:
+      - ze_bridge
+
 volumes:
   mongo-data:
+
 
 networks:
   ze_bridge:

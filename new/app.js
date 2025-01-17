@@ -5,7 +5,7 @@ app.use(express.json());
 const dotenv = require("dotenv");
 dotenv.config();
 
-
+const dbUri = process.env.MONGO_URI;
 app.use((req, res, next) => {
     console.log(`[${new Date().toLocaleTimeString()}] ${req.method} ${req.url}`);
     next();
@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 const PORT = 8000;
 app.use(cors({ origin: "*" }));
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/storedb", {
+mongoose.connect(dbUri, {
 useNewUrlParser: true,
 useUnifiedTopology: true,
 });

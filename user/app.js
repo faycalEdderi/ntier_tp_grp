@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+require("dotenv").config();
+
 app.use(express.json());
 
 const PORT = 4000;
@@ -8,7 +10,7 @@ const mongoUri = process.env.MONGO_URI;
 
 app.use(cors({ origin: "*" }));
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/storedb", {
+mongoose.connect(mongoUri, {
 });
 console.log("Connected to MongoDB");
 
