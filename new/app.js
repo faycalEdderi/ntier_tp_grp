@@ -20,9 +20,9 @@ useUnifiedTopology: true,
 });
 console.log("Connected to MongoDB");
 
-const productRoutes = require("./Route/NewRoute"); 
+const newRoutes = require("./Route/NewRoute"); 
 
-app.use("/news", productRoutes);
+app.use("/news", newRoutes);
 
 
 app.listen(PORT, () => {
