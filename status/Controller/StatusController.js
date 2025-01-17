@@ -4,6 +4,7 @@ const axios = require('axios');
 const services = [
   { name: 'users-service', url: 'http://localhost:3001/users/health', backup : 'http://localhost:4000/users/health' },
   { name: 'products-service', url: 'http://localhost:3001/products/health', backup : 'http://localhost:5000/products/health' },
+  { name: 'news-service', url: 'http://localhost:3001/news/health', backup : 'http://localhost:8000/news/health' },
   { name: 'gateway', url: 'http://localhost:3001/gateway/health', backup : 'http://localhost:3001/gateway/health' }
 ];
 
