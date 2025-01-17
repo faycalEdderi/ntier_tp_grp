@@ -63,17 +63,34 @@ services:
       - NODE_ENV=development
       - JWT_SECRET=sDeZHsH33*
       - MONGO_URI=mongodb://mongo:27017/storedb
-      - REDIS_URL=redis://redis
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
+      # - REDIS_URL=redis://redis
+      # - REDIS_HOST=redis
+      # - REDIS_PORT=6379
     volumes:
       - ./product:/app
       - /app/node_modules
     depends_on:
       - mongo
-      - redis
+      # - redis
     networks:
     - ze_bridge
+
+  new:
+    build: 
+      context: ./new
+      dockerfile: ./DockerFile
+    ports:
+      - "6000:6000"
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://localhost:27017/storedb
+    volumes:
+      - ./new:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+    networks:
+      - ze_bridge
 
   mongo:
     image: mongo:latest
@@ -83,12 +100,12 @@ services:
       - mongo-data:/data/db
     networks:
       - ze_bridge
-  redis:
-    image: redis:latest
-    ports:
-      - "6379:6379"
-    networks:
-      - ze_bridge
+  # redis:
+  #   image: redis:latest
+  #   ports:
+  #     - "6379:6379"
+  #   networks:
+  #     - ze_bridge
 
 volumes:
   mongo-data:
